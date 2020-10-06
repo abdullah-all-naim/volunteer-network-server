@@ -11,9 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
 
 
 const uri = `mongodb+srv://allnaim:allnaimbecm007@cluster0.guqdp.mongodb.net/MyData?retryWrites=true&w=majority`;
@@ -28,6 +26,9 @@ client.connect(err => {
       .then(result => {
         res.send(result.insertedCount > 0);
       })
+    })
+    app.get('/', (req, res) => {
+      res.send('Hello World!')
     })
     
     app.get('/volunteersdata', (req, res) => {
