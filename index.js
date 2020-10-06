@@ -5,6 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const ObjectId = require('mongodb').ObjectId;
+const mongoose = require('mongoose');
 require('dotenv').config()
 app.use(bodyParser.json());
 app.use(cors());
@@ -20,7 +21,6 @@ client.connect(err => {
     const taskList = client.db("MyData").collection("volunteersInfo");
     const addedEventsData = client.db("MyData").collection("volunteersdata");
     console.log('db connection success')
-    console.log(process.env.DB_NAME)
     app.post("/volunteerdata", (req, res) => {
       const product = req.body;
       taskList.insertOne(product)
