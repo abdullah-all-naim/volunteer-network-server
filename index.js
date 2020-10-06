@@ -28,6 +28,7 @@ client.connect(err => {
       })
     })
     app.get('/', (req, res) => {
+      console.log(res)
       res.send('Hello World!')
     })
     
